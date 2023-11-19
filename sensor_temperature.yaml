@@ -1,91 +1,103 @@
+mqtt:
+ broker: 192.168.20.251
 
 sensor:
-  - platform: homeassistant
-    name: "Office temperature sensor from hassio"
-    entity_id: sensor.bureau_temperature
-    #update_interval: 60s
-    id: office_temperature_sensor
+  - platform: mqtt_subscribe
+    name: "Ot.Bl.Th1 Temperature"
+    id: ATC_8DC797_Temperature
+    topic: Hz/Hz.Wz.Th_Climate/mT_out
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
-  - platform: homeassistant
-    name: "Living room temperature sensor from hassio"
-    entity_id: sensor.salon_temperature
-    id: living_room_temperature_sensor
+  - platform: mqtt_subscribe
+    name: "Bd.Bl.Th1 Temperature"
+    id: ATC_51C199_Temperature
+    topic: Hz/Hz.Bd.Th_Climate/mT_ble
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C13851C199/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
-  - platform: homeassistant
-    name: "Bedroom temperature sensor from hassio"
-    entity_id: sensor.chambre_temperature
-    id: bedroom_temperature_sensor
+  - platform: mqtt_subscribe
+    name: "Me.Bl.Th1 Temperature"
+    id: ATC_999EC2_Temperature
+    topic: Hz/Hz.Me.Th_Climate/mT_blw
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C138999EC2/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
-  - platform: homeassistant
-    name: "Bathroom temperature sensor from hassio"
-    entity_id: sensor.bain_temperature
-    id: bathroom_temperature_sensor
-    
-  - platform: homeassistant
-    name: "Corridor temperature sensor from hassio"
-    entity_id: sensor.corridor_temperature
-    id: corridor_temperature_sensor
-
-  - platform: homeassistant
-    name: "Storage temperature sensor from hassio"
-    entity_id: sensor.reduit_temperature
-    id: reduit_temperature_sensor
-    
-  - platform: homeassistant
-    name: "Indoor temperature sensor from hassio"
-    entity_id: sensor.indoor_temperature
-    id: indoor_temperature_sensor
-
-
-###### Other temperature sensor sample #######
-
-  # - platform: dht
-    # model : DHT22
-    # pin: GPIO25
-    # temperature:
-      # name: "Switch Temperature"
-      # id: switch_fan_controller_temperature
-    # humidity:
-      # name: "Switch Humidity"
-      # id: switch_fan_controller_humidity
-    # update_interval: 30s
+  - platform: mqtt_subscribe
+    name: "Me.Bl.Th2 Temperature"
+    id: ATC_BE2C2D_Temperature
+    topic: Hz/Hz.Me.Th_Climate/mT_blt
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C138BE2C2D/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
 
-    
-  # - platform: xiaomi_lywsdcgq
-    # mac_address: 58:2D:34:37:F1:10
-    # temperature:
-      # name: "Corridor Temperature"
-      # id: xiaomi_corridor_temperature
-    # humidity:
-      # name: "Corridor Humidity"
-      # id: xiaomi_corridor_humidity
-    # battery_level:
-      # name: "Corridor Xiaomi LYWSDCGQ Battery Level"
-      # id: xiaomi_corridor_battery_level
+  - platform: mqtt_subscribe
+    name: "Ku.Bl.Th1 Temperature"
+    id: ATC_254DD2_Temperature
+    topic: Hz/Hz.Ku.Th_Climate/mT_bl1
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C138254DD2/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
-      
-# Connect 1-Wire bus with DS18B20 temperature sensors
+  - platform: mqtt_subscribe
+    name: "Wz.Bl.Th1 Temperature"
+    id: ATC_7E0406_Temperature
+    topic: Hz/Hz.Wz.Th_Climate/mT_blt
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C1387E0406/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
-# dallas:
-  # - pin: GPI22
-    # update_interval: 15s
+  - platform: mqtt_subscribe
+    name: "Wz.Bl.Th2 Temperature"
+    id: ATC_C9FA01_Temperature
+    topic: Hz/Hz.Wz.Th_Climate/mT_blo
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C138C9FA01/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
-# sensor:
-  # - platform: dallas
-    # address: 0x8b031760522cff28
-    # name: "301_Heizkreis-WC-Vorlauf"
-    # id: WC_Vorlauf
-    # resolution: 12
-    # accuracy_decimals: 2
-    # filters:
-      # - offset: 0.0
+  - platform: mqtt_subscribe
+    name: "Wz.Bl.Th3 Temperature"
+    id: ATC_06F092_Temperature
+    topic: Hz/Hz.Wz.Th_Climate/mT_blw
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C13806F092/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
 
-  # - platform: dallas
-    # address: 0x353c38f649a51b28
-    # name: "301_Heizkreis-WC-Ruecklauf"
-    # id: WC_Ruecklauf
-    # resolution: 12
-    # accuracy_decimals: 2
-    # filters:
-      # - offset: 0.0
+  - platform: mqtt_subscribe
+    name: "Sz.Bl.Th1 Temperature"
+    id: ATC_E30A6D_Temperature
+    topic: Hz/Hz.Gz.Th_Climate/mT_bl1
+#    topic: home/opmqgw_BLE/BTtoMQTT/A4C138E30A6D/tempc
+    accuracy_decimals: 3
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+    filters:
+      - heartbeat: "60s"
+

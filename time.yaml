@@ -2,7 +2,7 @@
 time:
 - platform: sntp
   timezone : ${TZ}
-  servers:  [0.pool.ntp.org, 1.pool.ntp.org , 2.pool.ntp.org]
+  servers:  [owrt.home.arpa, 1.pool.ntp.org , 2.pool.ntp.org]
   on_time:
   - seconds: 0
     minutes: 0
@@ -12,20 +12,3 @@ time:
       - switch.toggle: floor_heating_ctrl_reboot
 
 
-interval:
-  - interval: 15min
-    then:
-      - script.execute: TH1_check
-      - script.execute: TH5_check
-  - interval: 17min
-    then:
-      - script.execute: TH2_check
-      - script.execute: TH6_check
-  - interval: 19min
-    then:
-      - script.execute: TH3_check
-      - script.execute: TH7_check
-  - interval: 21min
-    then:
-      - script.execute: TH4_check
-      - script.execute: TH8_check

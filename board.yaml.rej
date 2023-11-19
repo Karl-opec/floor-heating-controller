@@ -1,0 +1,62 @@
+--- board.yaml 2023-11-18 17:58:33.997314008 +0100
++++ board.yaml       2023-11-18 18:06:22.078429214 +0100
+@@ -7,43 +7,42 @@
+         - script.execute: valve_maintenance
+ 
+   project:
+-    name: "nliaudat.floor-heating-controller"
+-    version: "1.94.dev"
++    name: "nl-K-opec.floor-heating-controller"
++    version: "1.99.dev"
+ 
+ esp32:
+-  board: nodemcu-32s
++  board: az-delivery-devkit-v4
+   framework:
+-    type: esp-idf #arduino #esp-idf
+-    version: recommended #latest
++    type: esp-idf
++    version: recommended
+     sdkconfig_options:
+       CONFIG_COMPILER_OPTIMIZATION_SIZE: y
+ 
+ preferences:
+-  flash_write_interval: 60min
+-  
++  flash_write_interval: 120min
++
+ # Enable logging
+ logger:
+-  level: DEBUG #NONE# ERROR #INFO #DEBUG  #VERBOSE
+-  #baud_rate: 0 #to disable logging via UART
++  level: debug  #NONE# ERROR #INFO #DEBUG  #VERBOSE
++#  baud_rate: 230400 #to disable logging via UART
+   logs:
+-    adc: INFO
+-    sensor: ERROR
++    adc: DEBUG
++    sensor: INFO
+     binary_sensor: INFO
+     cover: INFO
+     switch: INFO
+     climate: INFO
+-    endstop : DEBUG
+-    text_sensor : ERROR
++    endstop: DEBUG
++    text_sensor: ERROR
+     homeassistant.sensor: ERROR
+ 
+ ### debug mode :
+ # logger:
+   # level: VERY_VERBOSE #NONE# ERROR #INFO #DEBUG  #VERBOSE
+ 
+-# Enable Home Assistant API
+-api:
+-  reboot_timeout: 30min
+-      
++# Disable  Home Assistant API
++#api:
++
+ 
+ ota:
+ 

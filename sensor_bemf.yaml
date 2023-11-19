@@ -6,9 +6,15 @@ binary_sensor:
   - platform: template
     id: BEMF_1_sensor
     name: "BEMF CH1 sensor"
-    lambda: return ((id(BEMF_1_2_sensor_ADC).state >= id(bemf_trigger_1).state));
+    lambda: |-
+          if (id(CH1_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_1_2_sensor_ADC).state >= id(bemf_trigger_1_open).state));
+          } else {
+                   return ((id(BEMF_1_2_sensor_ADC).state >= id(bemf_trigger_1_close).state));
+          }
+
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH1_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH1_cover).make_call();
@@ -36,12 +42,19 @@ binary_sensor:
                     //ESP_LOGD("main", "Rollback CH1 +%f %% to remove strenght", id(rollback).state);
                 }
 
+
   - platform: template
     id: BEMF_2_sensor
     name: "BEMF CH2 sensor"
-    lambda: return ((id(BEMF_1_2_sensor_ADC).state >= id(bemf_trigger_2).state));
+#    lambda: return ((id(BEMF_1_2_sensor_ADC).state >= id(bemf_trigger_2).state));
+    lambda: |-
+          if (id(CH2_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_1_2_sensor_ADC).state >= id(bemf_trigger_2_open).state));
+          } else {
+                   return ((id(BEMF_1_2_sensor_ADC).state >= id(bemf_trigger_2_close).state));
+          }
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH2_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH2_cover).make_call();
@@ -72,9 +85,15 @@ binary_sensor:
   - platform: template
     id: BEMF_3_sensor
     name: "BEMF CH3 sensor"
-    lambda: return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_3).state));
+#    lambda: return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_3).state));
+    lambda: |-
+          if (id(CH3_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_3_open).state));
+          } else {
+                   return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_3_close).state));
+          }
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH3_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH3_cover).make_call();
@@ -106,9 +125,15 @@ binary_sensor:
   - platform: template
     id: BEMF_4_sensor
     name: "BEMF CH4 sensor"
-    lambda: return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_4).state));
+#    lambda: return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_4).state));
+    lambda: |-
+          if (id(CH4_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_4_open).state));
+          } else {
+                   return ((id(BEMF_3_4_sensor_ADC).state >= id(bemf_trigger_4_close).state));
+          }
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH4_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH4_cover).make_call();
@@ -139,9 +164,15 @@ binary_sensor:
   - platform: template
     id: BEMF_5_sensor
     name: "BEMF CH5 sensor"
-    lambda: return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_5).state));
+#    lambda: return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_5).state));
+    lambda: |-
+          if (id(CH5_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_5_open).state));
+          } else {
+                   return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_5_close).state));
+          }
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH5_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH5_cover).make_call();
@@ -172,9 +203,16 @@ binary_sensor:
   - platform: template
     id: BEMF_6_sensor
     name: "BEMF CH6 sensor"
-    lambda: return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_6).state));
+#    lambda: return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_6).state));
+    lambda: |-
+          if (id(CH6_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_6_open).state));
+          } else {
+                   return ((id(BEMF_5_6_sensor_ADC).state >= id(bemf_trigger_6_close).state));
+          }
+
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH6_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH6_cover).make_call();
@@ -206,9 +244,16 @@ binary_sensor:
   - platform: template
     id: BEMF_7_sensor
     name: "BEMF CH7 sensor"
-    lambda: return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_7).state));
+#    lambda: return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_7).state));
+    lambda: |-
+          if (id(CH7_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_7_open).state));
+          } else {
+                   return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_7_close).state));
+          }
+
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH7_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH7_cover).make_call();
@@ -240,9 +285,15 @@ binary_sensor:
   - platform: template
     id: BEMF_8_sensor
     name: "BEMF CH8 sensor"
-    lambda: return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_8).state));
+#    lambda: return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_8).state));
+    lambda: |-
+          if (id(CH8_cover).current_operation == COVER_OPERATION_OPENING) {
+                  return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_8_open).state));
+          } else {
+                   return ((id(BEMF_7_8_sensor_ADC).state >= id(bemf_trigger_8_close).state));
+          }
     on_press:
-      then: 
+      then:
          - lambda: |-
                 if (id(CH8_cover).current_operation == COVER_OPERATION_OPENING) {
                     auto call = id(CH8_cover).make_call();
@@ -269,3 +320,5 @@ binary_sensor:
                     //call2.perform();
                     //ESP_LOGD("main", "Rollback CH8 +%f %% to remove strenght", id(rollback).state);
                 }
+
+

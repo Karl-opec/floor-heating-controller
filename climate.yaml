@@ -1,275 +1,438 @@
 #### change log ####
 # 19.10.2022 : https://github.com/esphome/esphome/pull/3643
 # 11.11.2021 : remove away_config (temperature do not survive reboot : https://github.com/esphome/issues/issues/2680#issuecomment-966863690
+# 18.11.2023 : change to PID climate
 
 
 
+output:
+  - platform: template
+    id: heater_ch1
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH1_cover
+            position: !lambda |-
+                              if (abs(id(CH1_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH1_cover).position) >= id(min_movement).state/100 ) {return id(CH1_cover).position;}
+                              else {
+                                     auto call = id(CH1_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
 
-#### re-test PID with different parameters from https://www.mdpi.com/1996-1073/13/8/2068
-# climate:
-  # - platform: pid
-    # id: living_pid_thermostat
-    # name: "Living PID climate"
-    # sensor: living_room_temperature_sensor
-    # default_target_temperature: 22°C
-    # heat_output: output_test_cover
-    # cool_output: output_test_cover
-    # control_parameters:
-      # kp: 18
-      # ki: 2300
-      # kd: 0.5
+      - logger.log:
+            format: "heater CH1 Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH1_cover).position' ]
+ 
+  - platform: template
+    id: heater_ch2
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH2_cover
+            position: !lambda if (abs(id(CH2_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH2_cover).position) >= id(min_movement).state/100 ) {return id(CH2_cover).position;}
+                              else {
+                                     auto call = id(CH2_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
 
-# cover:
-  # - platform: template
-    # name: cover_test
-    # open_action:
-      # - logger.log: "cover_test Open"
-    # close_action:
-      # - logger.log: "cover_test Close"
-    # stop_action:
-      # - logger.log: "cover_test Stop"
-    # id: cover_test
+      - logger.log:
+            format: "heater CH2  Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH2_cover).position'  ]
+ 
+  - platform: template
+    id: heater_ch3
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH3_cover
+            position: !lambda if (abs(id(CH3_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH3_cover).position) >= 0.01 ) {return id(CH3_cover).position;}
+                              else {
+                                     auto call = id(CH3_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
+
+      - logger.log:
+            format: "heater CH3  Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH3_cover).position'  ]
+ 
+  - platform: template
+    id: heater_ch4
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH4_cover
+            position: !lambda if (abs(id(CH4_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH4_cover).position) >= 0.01 ) {return id(CH4_cover).position;}
+                              else {
+                                     auto call = id(CH4_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
+
+      - logger.log:
+            format: "heater CH4 Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH4_cover).position'  ]
+ 
+  - platform: template
+    id: heater_ch5
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH5_cover
+            position: !lambda if (abs(id(CH5_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH5_cover).position) >= 0.01 ) {return id(CH5_cover).position;}
+                              else {
+                                     auto call = id(CH5_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
+
+      - logger.log:
+            format: "heater CH5 Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH5_cover).position'  ]
+ 
+  - platform: template
+    id: heater_ch6
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH6_cover
+            position: !lambda if (abs(id(CH6_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH6_cover).position) >= 0.01 ) {return id(CH6_cover).position;}
+                              else {
+                                     auto call = id(CH6_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
+
+      - logger.log:
+            format: "heater CH6 Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH6_cover).position'  ]
+ 
+  - platform: template
+    id: heater_ch7
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH7_cover
+            position: !lambda if (abs(id(CH7_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH7_cover).position) >= 0.01 ) {return id(CH7_cover).position;}
+                              else {
+                                     auto call = id(CH7_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
+
+      - logger.log:
+            format: "heater CH7 Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH7_cover).position'  ]
+ 
+  - platform: template
+    id: heater_ch8
+    type: float
+    min_power: 0.001
+    max_power: 0.998
+    write_action:
+      - cover.control:
+            id: CH8_cover
+            position: !lambda if (abs(id(CH8_cover).position - state) >= id(min_movement).state/100) { return state; }
+                              else if (abs(id(CH8_cover).position) >= 0.01 ) {return id(CH8_cover).position;}
+                              else {
+                                     auto call = id(CH8_cover).make_call();
+                                     call.set_command_close();
+                                     call.perform();
+                                     return (0.000);}
+
+      - logger.log:
+            format: "heater CH8 Sollpos: %.3f Istpos: %.3f"
+            args: [ 'state','id(CH8_cover).position'  ]
 
 
-# output:
-  # - platform: template
-    # id: output_test_cover
-    # type: float
-    # write_action:
-      # - cover.control:
-            # id: cover_test
-            # position: !lambda return state;
-      # - logger.log:
-            # format: "cover_test moved to position %.1f"
-            # args: [ 'state' ]   
-            
+sensor:
+  - platform: pid
+    name: "CH1 Oeffnung"
+    type: HEAT
+    id: ch1_heat
+    climate_id: "PID_CH1"
 
-##Results : 
-#1 : the PID climate make the valve activate too much, but need more testing
-#2 : Very difficult to find good paramaters (as I have a low temperature floor heating with much inertia)            
-#### END re-test PID with different paramaters
-            
-climate:  
-  - platform: thermostat
-    id: ${ch1_thermostat_name}_thermostat
-    name: ${ch1_thermostat_name}
+  - platform: pid
+    name: "CH2 Oeffnung"
+    type: HEAT
+    id: ch2_heat
+    climate_id: "PID_CH2"
+
+  - platform: pid
+    name: "CH3 Oeffnung"
+    type: HEAT
+    id: ch3_heat
+    climate_id: "PID_CH3"
+
+  - platform: pid
+    name: "CH4 Oeffnung"
+    type: HEAT
+    id: ch4_heat
+    climate_id: "PID_CH4"
+
+  - platform: pid
+    name: "CH5 Oeffnung"
+    type: HEAT
+    id: ch5_heat
+    climate_id: "PID_CH5"
+
+  - platform: pid
+    name: "CH6 Oeffnung"
+    type: HEAT
+    id: ch6_heat
+    climate_id: "PID_CH6"
+
+  - platform: pid
+    name: "CH7 Oeffnung"
+    type: HEAT
+    id: ch7_heat
+    climate_id: "PID_CH7"
+
+  - platform: pid
+    name: "CH8 Oeffnung"
+    type: HEAT
+    id: ch8_heat
+    climate_id: "PID_CH8"
+
+# Example configuration entry
+climate:
+  - platform: pid
+    name: "PID Climate Controller CH1"
+    id: "PID_CH1"
     sensor: ${ch1_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch1_default_target_temperature_low}
-        default_target_temperature_high: ${ch1_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' # do nothing cause action is triggered by time interval
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Bd.Th_Climate/desired-temp
+    heat_output: heater_ch1
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.1      # set for reboot 12%
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
+
     visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
-      
-  - platform: thermostat
-    id: ${ch2_thermostat_name}_thermostat
-    name: ${ch2_thermostat_name}
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#
+  - platform: pid
+    name: "PID Climate Controller CH2"
+    id: "PID_CH2"
     sensor: ${ch2_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch2_default_target_temperature_low}
-        default_target_temperature_high: ${ch2_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' 
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
-    visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Me.Th_Climate/desired-temp
+    heat_output: heater_ch2
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.25      # set for reboot 25
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
 
-  - platform: thermostat
-    id: ${ch3_thermostat_name}_thermostat
-    name: ${ch3_thermostat_name}
+    visual:
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#
+  - platform: pid
+    name: "PID Climate Controller CH3"
+    id: "PID_CH3"
     sensor: ${ch3_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch3_default_target_temperature_low}
-        default_target_temperature_high: ${ch3_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' 
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
-    visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Me.Th_Climate/desired-temp
+    heat_output: heater_ch3
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.25      # set for reboot 25%
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
 
-  - platform: thermostat
-    id: ${ch4_thermostat_name}_thermostat
-    name: ${ch4_thermostat_name}
+    visual:
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#
+
+  - platform: pid
+    name: "PID Climate Controller CH4"
+    id: "PID_CH4"
     sensor: ${ch4_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch4_default_target_temperature_low}
-        default_target_temperature_high: ${ch4_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' 
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
-    visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Wz.Th_Climate/desired-temp
+    heat_output: heater_ch4
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.25      # set for reboot 25%
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
 
-  - platform: thermostat
-    id: ${ch5_thermostat_name}_thermostat
-    name: ${ch5_thermostat_name}
+    visual:
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#
+  - platform: pid
+    name: "PID Climate Controller CH5"
+    id: "PID_CH5"
     sensor: ${ch5_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch5_default_target_temperature_low}
-        default_target_temperature_high: ${ch5_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' 
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
-    visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Ku.Th_Climate/desired-temp
+    heat_output: heater_ch5
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.25      # set for reboot 12%
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
 
-  - platform: thermostat
-    id: ${ch6_thermostat_name}_thermostat
-    name: ${ch6_thermostat_name}
+    visual:
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#
+  - platform: pid
+    name: "PID Climate Controller CH6"
+    id: "PID_CH6"
     sensor: ${ch6_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch6_default_target_temperature_low}
-        default_target_temperature_high: ${ch6_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' 
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
-    visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Wz.Th_Climate/desired-temp
+    heat_output: heater_ch6
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.25      # set for reboot 25%
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
 
-  - platform: thermostat
-    id: ${ch7_thermostat_name}_thermostat
-    name: ${ch7_thermostat_name}
+    visual:
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#
+  - platform: pid
+    name: "PID Climate Controller CH7"
+    id: "PID_CH7"
     sensor: ${ch7_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch7_default_target_temperature_low}
-        default_target_temperature_high: ${ch7_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' 
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
-    visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Wz.Th_Climate/desired-temp
+    heat_output: heater_ch7
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.25      # set for reboot 12%
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
 
-  - platform: thermostat
-    id: ${ch8_thermostat_name}_thermostat
-    name: ${ch8_thermostat_name}
-    sensor: ${ch8_thermostat_sensor}
-    default_preset: default
-    on_boot_restore_from: memory
-    startup_delay: true
-    preset:
-      - name: default
-        default_target_temperature_low: ${ch8_default_target_temperature_low}
-        default_target_temperature_high: ${ch8_default_target_temperature_high}
-        mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
-    min_heating_off_time: 300s
-    min_heating_run_time: 300s
-    min_idle_time: 30s
-    heat_action: 
-         - lambda: 'return;' 
-    cool_action:
-         - lambda: 'return;' 
-    idle_action:
-         - lambda: 'return;' 
     visual:
-      min_temperature: 10 °C
-      max_temperature: 30 °C
-      temperature_step: 0.1 °C
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#
+
+  - platform: pid
+    name: "PID Climate Controller CH8"
+    id: "PID_CH8"
+    sensor: ${ch8_thermostat_sensor}
+    default_target_temperature: 21.2°C
+    target_temperature_command_topic:  Hz/Hz.Gz.Th_Climate/desired-temp
+    heat_output: heater_ch8
+    control_parameters:
+      kp: ${pid_kp}
+      ki: ${pid_ki}
+      kd: ${pid_kd}
+      min_integral: 0.003
+      max_integral: 0.997
+      starting_integral_term: 0.25      # set for reboot 12%
+      output_averaging_samples: 2      # smooth the output over 5 samples
+      derivative_averaging_samples: 5  # smooth the derivative value over 10 samples
+
+    visual:
+      min_temperature: 19.0 °C
+      max_temperature: 24.0 °C
+      temperature_step: 0.05 °C
+
+
+
+
+#    deadband_parameters:
+#      threshold_high: 0.05°C       # deadband within +/-0.5°C of target_temperature
+#      threshold_low: -0.05°C 
+#    heat_out.min_output: 0
+#    heat_out.max_output: 100
+
+
+

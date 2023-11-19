@@ -1,103 +1,875 @@
 
 number:
-    ## #for 0 V and 0.1 V you’ll get the same value: 0 https://randomnerdtutorials.com/esp32-adc-analog-read-arduino-ide/    
-    
-  - platform: template
-    name: "bemf_trigger_1"
-    optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
-    restore_value: true
-    initial_value: ${ch1_bemf_trigger}
-    id: bemf_trigger_1
 
   - platform: template
-    name: "bemf_trigger_2"
+    name: "bemf_trigger_1_open"
     optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
     restore_value: true
-    initial_value: ${ch2_bemf_trigger}
-    id: bemf_trigger_2
-    
-  - platform: template
-    name: "bemf_trigger_3"
-    optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
-    restore_value: true
-    initial_value: ${ch3_bemf_trigger}
-    id: bemf_trigger_3
-    
-  - platform: template
-    name: "bemf_trigger_4"
-    optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
-    restore_value: true
-    initial_value: ${ch4_bemf_trigger}
-    id: bemf_trigger_4
-    
-  - platform: template
-    name: "bemf_trigger_5"
-    optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
-    restore_value: true
-    initial_value: ${ch5_bemf_trigger}
-    id: bemf_trigger_5
+    initial_value: ${ch1_bemf_trigger_open}
+    id: bemf_trigger_1_open
 
   - platform: template
-    name: "bemf_trigger_6"
+    name: "bemf_trigger_1_close"
     optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
     restore_value: true
-    initial_value: ${ch6_bemf_trigger}
-    id: bemf_trigger_6
-    
-  - platform: template
-    name: "bemf_trigger_7"
-    optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
-    restore_value: true
-    initial_value: ${ch7_bemf_trigger}
-    id: bemf_trigger_7
-    
-  - platform: template
-    name: "bemf_trigger_8"
-    optimistic: true
-    min_value: 0.005
-    max_value: 150.00
-    step: 0.005
-    restore_value: true
-    initial_value: ${ch8_bemf_trigger}
-    id: bemf_trigger_8
+    initial_value: ${ch1_bemf_trigger_close}
+    id: bemf_trigger_1_close
 
-  # - platform: template
-    # name: "rollback %"
-    # optimistic: true
-    # min_value: 1
-    # max_value: 10
-    # step: 1
-    # restore_value: true
-    # initial_value: ${endstop_rollback_percent}
-    # id: rollback    
-    
+  - platform: template
+    name: "bemf_trigger_2_open"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch2_bemf_trigger_open}
+    id: bemf_trigger_2_open
+
+  - platform: template
+    name: "bemf_trigger_2_close"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch2_bemf_trigger_close}
+    id: bemf_trigger_2_close
+
+  - platform: template
+    name: "bemf_trigger_3_open"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch3_bemf_trigger_open}
+    id: bemf_trigger_3_open
+
+  - platform: template
+    name: "bemf_trigger_3_close"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch3_bemf_trigger_close}
+    id: bemf_trigger_3_close
+
+  - platform: template
+    name: "bemf_trigger_4_open"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch4_bemf_trigger_open}
+    id: bemf_trigger_4_open
+
+  - platform: template
+    name: "bemf_trigger_4_close"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch4_bemf_trigger_close}
+    id: bemf_trigger_4_close
+
+  - platform: template
+    name: "bemf_trigger_5_open"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch5_bemf_trigger_open}
+    id: bemf_trigger_5_open
+
+  - platform: template
+    name: "bemf_trigger_5_close"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch5_bemf_trigger_close}
+    id: bemf_trigger_5_close
+
+  - platform: template
+    name: "bemf_trigger_6_open"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch6_bemf_trigger_open}
+    id: bemf_trigger_6_open
+
+  - platform: template
+    name: "bemf_trigger_6_close"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch6_bemf_trigger_close}
+    id: bemf_trigger_6_close
+
+  - platform: template
+    name: "bemf_trigger_7_open"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch7_bemf_trigger_open}
+    id: bemf_trigger_7_open
+
+  - platform: template
+    name: "bemf_trigger_7_close"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch7_bemf_trigger_close}
+    id: bemf_trigger_7_close
+
+  - platform: template
+    name: "bemf_trigger_8_open"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch8_bemf_trigger_open}
+    id: bemf_trigger_8_open
+
+  - platform: template
+    name: "bemf_trigger_8_close"
+    optimistic: true
+    min_value: 0.01
+    max_value: 0.35
+    step: 0.002
+    restore_value: true
+    initial_value: ${ch8_bemf_trigger_close}
+    id: bemf_trigger_8_close
+
   - platform: template
     name: "min movement change %"
     optimistic: true
     min_value: 1
     max_value: 25
-    step: 1
+    step: 0.1
     restore_value: true
-    initial_value: 5
+    initial_value: 2.5
     id: min_movement 
+
+#-----------------------------
+  - platform: template
+    name: "Kp_ch1"
+    id: kp_1
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01 
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH1
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH1).get_ki();"
+            kd: !lambda "return id(PID_CH1).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch1"
+    id: ki_1
+    min_value: 0.00005
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH1
+            kp: !lambda "return id(PID_CH1).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH1).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch1"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_1
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH1
+            kp: !lambda "return id(PID_CH1).get_kp();"
+            ki: !lambda "return id(PID_CH1).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+  - platform: template
+    name: "Kp_ch2"
+    id: kp_2
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH2
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH2).get_ki();"
+            kd: !lambda "return id(PID_CH2).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch2"
+    id: ki_2
+    min_value: 0.00005
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH2
+            kp: !lambda "return id(PID_CH2).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH2).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch2"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_2
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH2
+            kp: !lambda "return id(PID_CH2).get_kp();"
+            ki: !lambda "return id(PID_CH2).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+  - platform: template
+    name: "Kp_ch3"
+    id: kp_3
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH3
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH3).get_ki();"
+            kd: !lambda "return id(PID_CH3).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch3"
+    id: ki_3
+    min_value: 0.00005
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH3
+            kp: !lambda "return id(PID_CH3).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH3).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch3"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_3
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH3
+            kp: !lambda "return id(PID_CH3).get_kp();"
+            ki: !lambda "return id(PID_CH3).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+  - platform: template
+    name: "Kp_ch4"
+    id: kp_4
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01 
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH4
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH4).get_ki();"
+            kd: !lambda "return id(PID_CH4).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch4"
+    id: ki_4
+    min_value: 0.00002
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH4
+            kp: !lambda "return id(PID_CH4).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH4).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch4"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_4
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH4
+            kp: !lambda "return id(PID_CH4).get_kp();"
+            ki: !lambda "return id(PID_CH4).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+  - platform: template
+    name: "Kp_ch6"
+    id: kp_5
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01 
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH5
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH5).get_ki();"
+            kd: !lambda "return id(PID_CH5).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch5"
+    id: ki_5
+    min_value: 0.00002
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH5
+            kp: !lambda "return id(PID_CH5).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH5).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch5"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_5
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH5
+            kp: !lambda "return id(PID_CH5).get_kp();"
+            ki: !lambda "return id(PID_CH5).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+
+
+
+  - platform: template
+    name: "Kp_ch6"
+    id: kp_6
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH6
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH6).get_ki();"
+            kd: !lambda "return id(PID_CH6).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch6"
+    id: ki_6
+    min_value: 0.00002
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH6
+            kp: !lambda "return id(PID_CH6).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH6).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch6"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_6
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH6
+            kp: !lambda "return id(PID_CH6).get_kp();"
+            ki: !lambda "return id(PID_CH6).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+
+  - platform: template
+    name: "Kp_ch7"
+    id: kp_7
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH7
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH7).get_ki();"
+            kd: !lambda "return id(PID_CH7).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch7"
+    id: ki_7
+    min_value: 0.00002
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH7
+            kp: !lambda "return id(PID_CH7).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH7).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch7"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_7
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH7
+            kp: !lambda "return id(PID_CH7).get_kp();"
+            ki: !lambda "return id(PID_CH7).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+
+  - platform: template
+    name: "Kp_ch8"
+    id: kp_8
+    min_value: 0.010
+    max_value: 1.000
+    step: 0.01
+    initial_value: ${pid_kp}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:
+        - climate.pid.set_control_parameters:
+            id: PID_CH8
+            kp: !lambda "return x;"
+            ki: !lambda "return id(PID_CH8).get_ki();"
+            kd: !lambda "return id(PID_CH8).get_kd();"
+    icon: mdi:chart-line-variant
+
+  - platform: template
+    name: "Ki_ch8"
+    id: ki_8
+    min_value: 0.00002
+    max_value: 0.004
+    step: 0.00005
+    initial_value: ${pid_ki}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH8
+            kp: !lambda "return id(PID_CH8).get_kp();"
+            ki: !lambda "return x;"
+            kd: !lambda "return id(PID_CH8).get_kd();"
+    icon: mdi:math-integral-box
+
+  - platform: template
+    name: "Kd-ch8"
+    min_value: 0.01
+    max_value: 10.00
+    step: 0.01
+    id: kd_8
+    initial_value: ${pid_kd}
+    optimistic: true
+    entity_category: config
+    restore_value: true
+    on_value:
+      then:  
+        - climate.pid.set_control_parameters:
+            id: PID_CH8
+            kp: !lambda "return id(PID_CH8).get_kp();"
+            ki: !lambda "return id(PID_CH8).get_ki();"
+            kd: !lambda "return x;"
+    icon: mdi:delta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  - platform: template
+#    id: kp_1
+#    name: "Kp-ch1"
+#    optimistic: true
+#    min_value: 0.010
+#    max_value: 1.000
+#    step: 0.001
+#    restore_value: true
+#    initial_value: ${pid_kp}
+
+#  - platform: template
+#    name: "Ki-ch1"
+#    optimistic: true
+#    min_value: 0.0001
+#    max_value: 1.0
+#    step: 0.0001
+#    restore_value: true
+#    initial_value: ${pid_ki}
+#    id: ki_1
+
+#  - platform: template
+#    name: "Kd-ch1"
+#    optimistic: true
+#    min_value: 0.01
+#    max_value: 1.00
+#    step: 0.01
+#    restore_value: true
+#    initial_value: ${pid_kd}
+#    id: kd_1
+
+###
+#  - platform: template
+#    name: "Kp-ch2"
+#    optimistic: true
+#    min_value: 0.010
+#    max_value: 1.000
+#    step: 0.001
+#    restore_value: true
+#    initial_value: ${pid_kp}
+#    id: kp_2
+
+#  - platform: template
+#    name: "Ki-ch2"
+#    optimistic: true
+#    min_value: 0.0001
+#    max_value: 1.0
+#    step: 0.0001
+#    restore_value: true
+#    initial_value: ${pid_ki}
+#    id: ki_2
+
+#  - platform: template
+#    name: "Kd-ch2"
+#    optimistic: true
+#    min_value: 0.01
+#    max_value: 1.00
+#    step: 0.01
+#    restore_value: true
+#    initial_value: ${pid_kd}
+#    id: kd_2
+###
+#  - platform: template
+#    name: "Kp-ch3"
+#    optimistic: true
+#    min_value: 0.010
+#    max_value: 1.000
+#    step: 0.001
+#    restore_value: true
+#    initial_value: ${pid_kp}
+#    id: kp_3
+
+#  - platform: template
+#    name: "Ki-ch3"
+#    optimistic: true
+#    min_value: 0.0001
+#    max_value: 1.0
+#    step: 0.0001
+#    restore_value: true
+#    initial_value: ${pid_ki}
+#    id: ki_3
+
+#  - platform: template
+#    name: "Kd-ch3"
+#    optimistic: true
+#    min_value: 0.01
+#    max_value: 1.00
+#    step: 0.01
+#    restore_value: true
+#    initial_value: ${pid_kd}
+#    id: kd_3
+
+#  - platform: template
+#    name: "Kp-ch4"
+#    optimistic: true
+#    min_value: 0.010
+#    max_value: 1.000
+#    step: 0.001
+#    restore_value: true
+#    initial_value: ${pid_kp}
+#    id: kp_4
+
+#  - platform: template
+#    name: "Ki-ch4"
+#    optimistic: true
+#    min_value: 0.0001
+#    max_value: 1.0
+#    step: 0.0001
+#    restore_value: true
+#    initial_value: ${pid_ki}
+#    id: ki_4
+
+#  - platform: template
+#    name: "Kd-ch4"
+#    optimistic: true
+#    min_value: 0.01
+#    max_value: 1.00
+#    step: 0.01
+#    restore_value: true
+#    initial_value: ${pid_kd}
+#    id: kd_4
+
+#  - platform: template
+#    name: "Kp-ch5"
+#    optimistic: true
+#    min_value: 0.010
+#    max_value: 1.000
+#    step: 0.001
+#    restore_value: true
+#    initial_value: ${pid_kp}
+#    id: kp_5
+
+#  - platform: template
+#    name: "Ki-ch5"
+#    optimistic: true
+#    min_value: 0.0001
+#    max_value: 1.0
+#    step: 0.0001
+#    restore_value: true
+#    initial_value: ${pid_ki}
+#    id: ki_5
+
+#  - platform: template
+#    name: "Kd-ch5"
+#    optimistic: true
+#    min_value: 0.01
+#    max_value: 1.00
+#    step: 0.01
+#    restore_value: true
+#    initial_value: ${pid_kd}
+#    id: kd_5
+
+#  - platform: template
+#    name: "Kp-ch6"
+#    optimistic: true
+#    min_value: 0.010
+#    max_value: 1.000
+#    step: 0.001
+#    restore_value: true
+#    initial_value: ${pid_kp}
+#    id: kp_6
+
+#  - platform: template
+#    name: "Ki-ch6"
+#    optimistic: true
+#    min_value: 0.0001
+#    max_value: 1.0
+#    step: 0.0001
+#    restore_value: true
+#    initial_value: ${pid_ki}
+#    id: ki_6
+
+#  - platform: template
+#    name: "Kd-ch6"
+#    optimistic: true
+#    min_value: 0.01
+#    max_value: 1.00
+#    step: 0.01
+#    restore_value: true
+#    initial_value: ${pid_kd}
+#    id: kd_6
+
+#  - platform: template
+#    name: "Kp-ch7"
+#    optimistic: true
+#    min_value: 0.010
+#    max_value: 1.000
+#    step: 0.001
+#    restore_value: true
+#    initial_value: ${pid_kp}
+#    id: kp_7
+
+#  - platform: template
+#    name: "Ki-ch7"
+#    optimistic: true
+#    min_value: 0.0001
+#    max_value: 1.0
+#    step: 0.0001
+#    restore_value: true
+#    initial_value: ${pid_ki}
+#    id: ki_7
+
+#  - platform: template
+#    name: "Kd-ch7"
+#    optimistic: true
+#    min_value: 0.01
+#    max_value: 1.00
+#    step: 0.01
+#    restore_value: true
+#    initial_value: ${pid_kd}
+#    id: kd_7
+
+
+
+
+

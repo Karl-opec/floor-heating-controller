@@ -7,42 +7,43 @@ esphome:
         - script.execute: valve_maintenance
 
   project:
-    name: "nl-K-opec.floor-heating-controller"
-    version: "1.99.dev"
+    name: "nliaudat.floor-heating-controller"
+    version: "1.94.dev"
 
 esp32:
-  board: az-delivery-devkit-v4
+  board: nodemcu-32s
   framework:
-    type: esp-idf
-    version: recommended
+    type: esp-idf #arduino #esp-idf
+    version: recommended #latest
     sdkconfig_options:
       CONFIG_COMPILER_OPTIMIZATION_SIZE: y
 
 preferences:
-  flash_write_interval: 120min
-
+  flash_write_interval: 60min
+  
 # Enable logging
 logger:
-  level: debug  #NONE# ERROR #INFO #DEBUG  #VERBOSE
-#  baud_rate: 230400 #to disable logging via UART
+  level: DEBUG #NONE# ERROR #INFO #DEBUG  #VERBOSE
+  #baud_rate: 0 #to disable logging via UART
   logs:
-    adc: DEBUG
-    sensor: INFO
+    adc: INFO
+    sensor: ERROR
     binary_sensor: INFO
     cover: INFO
     switch: INFO
     climate: INFO
-    endstop: DEBUG
-    text_sensor: ERROR
+    endstop : DEBUG
+    text_sensor : ERROR
     homeassistant.sensor: ERROR
 
 ### debug mode :
 # logger:
   # level: VERY_VERBOSE #NONE# ERROR #INFO #DEBUG  #VERBOSE
 
-# Disable  Home Assistant API
-#api:
-
+# Enable Home Assistant API
+api:
+  reboot_timeout: 30min
+      
 
 ota:
 
@@ -55,4 +56,3 @@ sn74hc595:
     latch_pin: GPIO17 #Pin connected to SN74HC595 RCLK pin
     oe_pin: GPIO18 ### needed by esphome, but connected to GND (outputEnable is used only for pwm all the pin)
     sr_count: 2 #Number of daisy-chained shift registers, up-to 4  
-

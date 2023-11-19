@@ -3,8 +3,6 @@ sensor:
   - platform: wifi_signal
     name: "${friendly_name} WiFi Signal"
     update_interval: 60s
-    entity_category: "diagnostic"
-    id: wifi_signal_db
     
   - platform: uptime
     name: "${friendly_name} Uptime"    
@@ -28,15 +26,18 @@ sensor:
                 (hours ? to_string(hours) + "h " : "") +
                 (minutes ? to_string(minutes) + "m " : "") +
                 (to_string(seconds) + "s")
-              ).c_str();      
-              
-              
+              ).c_str();
 
   - platform: internal_temperature
     name: "${friendly_name} Internal Temperature"
+    accuracy_decimals: 1
+    device_class: "temperature"
+    unit_of_measurement: "°C"
+
+
 
 text_sensor:  
   - platform: template
     name: "${friendly_name} uptime"
     id: uptime_human
-    icon: mdi:clock-start  
+    icon: mdi:clock-start

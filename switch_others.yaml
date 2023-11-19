@@ -5,51 +5,92 @@ switch:
   - platform: restart
     name: "${friendly_name} restart"
     icon: "mdi:restart"
-    id: floor_heating_ctrl_reboot    
+    id: floor_heating_ctrl_reboot
 
   - platform: template
     name: "Valve maintenance"
     turn_on_action:
       - script.execute: valve_maintenance
-       
-      
+
+  - platform: template
+    name: "Valve maintenance_CH1"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH1
+
+  - platform: template
+    name: "Valve maintenance_CH2"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH2
+
+  - platform: template
+    name: "Valve maintenance_CH3"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH3
+
+  - platform: template
+    name: "Valve maintenance_CH4"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH4
+
+  - platform: template
+    name: "Valve maintenance_CH5"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH5
+
+
+  - platform: template
+    name: "Valve maintenance_CH6"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH6
+
+  - platform: template
+    name: "Valve maintenance_CH7"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH7
+
+  - platform: template
+    name: "Valve maintenance_CH8"
+    turn_on_action:
+      - script.execute: valve_maintenance_CH8
+
+
   - platform: template
     name: "Run ${ch1_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH1_check    
+      - script.execute: TH1_check
 
   - platform: template
     name: "Run ${ch2_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH2_check   
+      - script.execute: TH2_check
 
   - platform: template
     name: "Run ${ch3_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH3_check   
+      - script.execute: TH3_check
 
   - platform: template
     name: "Run ${ch4_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH4_check   
+      - script.execute: TH4_check
 
   - platform: template
     name: "Run ${ch5_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH5_check   
+      - script.execute: TH5_check
 
   - platform: template
     name: "Run ${ch6_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH6_check   
+      - script.execute: TH6_check
 
   - platform: template
     name: "Run ${ch7_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH7_check   
+      - script.execute: TH7_check
 
   - platform: template
     name: "Run ${ch8_thermostat_name} check"
     turn_on_action:
-      - script.execute: TH8_check         
+      - script.execute: TH8_check
  
