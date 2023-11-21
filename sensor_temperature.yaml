@@ -93,7 +93,7 @@ sensor:
   - platform: mqtt_subscribe
     name: "Sz.Bl.Th1 Temperature"
     id: ATC_E30A6D_Temperature
-    topic: Hz/Hz.Gz.Th_Climate/mT_bl1
+    topic: Hz/Hz.Gz.Th_Climate/mT_ble
 #    topic: home/opmqgw_BLE/BTtoMQTT/A4C138E30A6D/tempc
     accuracy_decimals: 3
     device_class: "temperature"
